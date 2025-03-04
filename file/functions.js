@@ -58,3 +58,16 @@ function timeElapse(date){
 	var result = "第 <span class=\"digit\">" + days + "</span> 天 <span class=\"digit\">" + hours + "</span> 小时 <span class=\"digit\">" + minutes + "</span> 分钟 <span class=\"digit\">" + seconds + "</span> 秒"; 
 	$("#clock").html(result);
 }
+
+// 在文档加载完成后添加全局点击监听
+$(document).ready(function() {
+    document.addEventListener('click', function() {
+        var audio = document.getElementById('bgm');
+        audio.play().then(() => {
+            // 首次交互后移除监听
+            document.removeEventListener('click', arguments.callee);
+        }).catch(() => {
+            console.log('需要用户交互后才能播放音频');
+        });
+    }, { once: true });
+});

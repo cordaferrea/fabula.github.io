@@ -217,6 +217,7 @@
         }
     }
 
+    // 在Tree构造函数中添加
     Tree = function(canvas, width, height, opt) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
